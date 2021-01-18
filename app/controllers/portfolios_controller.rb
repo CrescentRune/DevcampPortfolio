@@ -41,6 +41,19 @@ class PortfoliosController < ApplicationController
             # format.json { render json: @blog.errors, status: :unprocessable_entity }
           end
         end
-      end
+    end
 
+
+    def destroy
+        # Lookup the item in question
+        @portfolio_item = Portfolio.find(params[:id])
+
+        # Destroy/delete the record
+        @portfolio_item.destroy
+
+        # Redirect post-destruction
+        respond_to do |format|
+            format.html { redirect_to portfolios_url, notice: 'Portfolio item was successfully destroyed.' }
+        end
+    end
 end
