@@ -1,7 +1,18 @@
 <h1>Portfolio Items</h1>
 
 <%# <a href="portfolios/new">Create new Item</a> %>
-<%= link_to "Create New Item", new_portfolio_path %>
+<div>
+    <%= link_to "Create New Item", new_portfolio_path %>
+</div>
+<div>
+    <%= link_to "Show all Items", '/portfolios/' %>
+</div>
+<div>
+    <%= link_to "Ruby on Rails Items", portfolio_path('rails')%>
+</div>
+<div>
+    <%= link_to "Angular items", portfolio_path('angular')%>
+</div>
 
 <%# RELATIVE PATH %>
 <p> <%= new_portfolio_path %> </p>
@@ -14,6 +25,7 @@
 <div style="margin-bottom: 45px;">
     <hr/>
     <h3><%= link_to portfolio_item.title, portfolio_show_path(portfolio_item) %></h3>
+    <p><%= portfolio_item.subtitle %></p>
     <p><%= portfolio_item.body %></p>
     <%= image_tag portfolio_item.thumb_image unless portfolio_item.thumb_image.nil? %>
     <%= link_to "Edit", edit_portfolio_path(portfolio_item) %>

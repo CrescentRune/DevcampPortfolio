@@ -1,6 +1,12 @@
 class PortfoliosController < ApplicationController
     def index
-        @portfolio_items = Portfolio.all
+        if (!params[:subtitle])
+            @portfolio_items = Portfolio.all
+        elsif params[:subtitle] == 'rails'
+            @portfolio_items = Portfolio.ruby_on_rails_portfolio_items
+        elsif params[:subtitle] == 'angular'
+            @portfolio_items = Portfolio.angular
+        end
     end
 
     def new
